@@ -11,7 +11,7 @@
     "scripts": {
         "build:pkg": "npm run clean && rollup -c",
         "build:pkg:watch": "npm run clean && rollup -cw",
-        "build:app": "npm run clean && parcel build src/index.html",
+        "build:app": "npm run clean && parcel build app/index.html",
         "clean": "rimraf coverage build dist tmp",
         "start": "parcel app/index.html --no-cache",
         "serve": "npm run clean && parcel serve app/index.html",
@@ -19,11 +19,12 @@
         "prettier:fix": "prettier \"src/**/*\" --write",
         "prettier:check": "prettier \"src/**/*\" --check",
         "type-check": "tsc --noEmit",
-        "test": "jest"
+        "test": "jest",
+        "ci": "npm run test && npm run lint && npm run prettier:check && npm run type-check && npm run build:pkg && npm run build:app"
     },
     "husky": {
         "hooks": {
-            "pre-commit": "npm run test && npm run lint && npm run prettier:check && npm run type-check && npm run build"
+            "pre-commit": "npm run ci"
         }
     },
     "repository": {
