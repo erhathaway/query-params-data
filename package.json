@@ -1,13 +1,20 @@
 {
-    "name": "react-typescript-parcel-boilerplate",
-    "version": "1.0.0",
+    "name": "query-params-data",
+    "version": "0.1.0",
     "description": "A React, Typescript, and Parcel boilerplate",
-    "main": "index.tsx",
+    "main": "./dist/index.cjs.js",
+    "module": "./dist/index.es.js",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
     "scripts": {
-        "clean": "rimraf dist tmp",
-        "start": "parcel src/index.html --no-cache",
-        "build": "npm run clean && parcel build src/index.html",
-        "serve": "npm run clean && parcel serve src/index.html",
+        "build:pkg": "npm run clean && rollup -c",
+        "build:pkg:watch": "npm run clean && rollup -cw",
+        "build:app": "npm run clean && parcel build src/index.html",
+        "clean": "rimraf coverage build dist tmp",
+        "start": "parcel app/index.html --no-cache",
+        "serve": "npm run clean && parcel serve app/index.html",
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
         "prettier:fix": "prettier \"src/**/*\" --write",
         "prettier:check": "prettier \"src/**/*\" --check",
@@ -21,14 +28,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/erhathaway/react-typescript-parcel-boilerplate.git"
+        "url": "git+https://github.com/erhathaway/query-params-data.git"
     },
     "author": "Ethan Hathaway",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/erhathaway/react-typescript-parcel-boilerplate/issues"
+        "url": "https://github.com/erhathaway/query-params-data/issues"
     },
-    "homepage": "https://github.com/erhathaway/react-typescript-parcel-boilerplate#readme",
+    "homepage": "https://github.com/erhathaway/query-params-data#readme",
     "devDependencies": {
         "@types/animejs": "^3.1.0",
         "@types/jest": "^25.1.3",
@@ -48,6 +55,9 @@
         "prettier": "^1.18.2",
         "react-test-renderer": "^16.13.0",
         "rimraf": "^3.0.2",
+        "rollup": "^2.0.2",
+        "rollup-plugin-eslint": "^7.0.0",
+        "rollup-plugin-typescript2": "^0.26.0",
         "ts-jest": "^25.2.1",
         "typescript": "^3.8.3"
     },
@@ -55,6 +65,7 @@
         "animejs": "^3.1.0",
         "mobx": "^5.15.4",
         "mobx-react": "^6.1.8",
+        "query-string": "^6.11.1",
         "react": "^16.13.0",
         "react-dom": "^16.13.0",
         "styled-components": "^4.4.1"
