@@ -9,6 +9,7 @@
         "dist"
     ],
     "scripts": {
+        "build": "npm run build:pkg && npm run build:app",
         "build:pkg": "npm run clean && rollup -c",
         "build:pkg:watch": "npm run clean && rollup -cw",
         "build:app": "npm run clean && parcel build app/index.html",
