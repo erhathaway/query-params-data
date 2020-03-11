@@ -29,13 +29,18 @@ class UrlStore<State> implements ICurrentLocationStore<State> {
         clearInterval(this.setIntervalHandle);
     };
 
-    public subscribeToStateChanges = (fn: StateObserver<State>): void => {
+    public subscribeToStateChanges = (
+        fn: StateObserver<State>,
+        options?: {getCurrentState: boolean}
+    ): void => {
         this.observers.push(fn);
 
         // send existing state to observer
-        const deserializedState = this.getState();
-        if (deserializedState) {
-            fn(deserializedState);
+        if (options.getCurrentState) {
+            const deserializedState = this.getState();
+            if (deserializedState) {
+                fn(deserializedState);
+            }
         }
     };
 
