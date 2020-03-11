@@ -1,6 +1,6 @@
 {
     "name": "query-params-data",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "A React, Typescript, and Parcel boilerplate",
     "main": "./dist/index.cjs.js",
     "module": "./dist/index.es.js",
