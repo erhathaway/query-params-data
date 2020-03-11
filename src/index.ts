@@ -23,6 +23,7 @@ class UrlStore<State> implements ICurrentLocationStore<State> {
         this.observers = [];
 
         this.existingLocation = '';
+        this._monitorLocation();
         this.setIntervalHandle = setInterval(() => {
             this._monitorLocation();
         }, 100);
