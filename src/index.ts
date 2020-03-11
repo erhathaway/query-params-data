@@ -5,7 +5,10 @@ type StateObserver<State> = (newState: State | undefined) => any; // eslint-disa
 export interface ICurrentLocationStore<State> {
     setState: (location: State | undefined, options?: {replaceLocation: boolean}) => void;
     getState: () => State | undefined | void;
-    subscribeToStateChanges: (observer: StateObserver<State>) => void;
+    subscribeToStateChanges: (
+        observer: StateObserver<State>,
+        options?: {getCurrentState: boolean}
+    ) => void;
 }
 
 class UrlStore<State> implements ICurrentLocationStore<State> {
