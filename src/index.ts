@@ -14,9 +14,9 @@ export interface ICurrentLocationStore<State> {
 class UrlStore<State> implements ICurrentLocationStore<State> {
     public queryParamKey: string;
     public observers: Array<StateObserver<State>>;
-    public stateWatcher: ReturnType<typeof window.setInterval>;
+    public stateWatcher: ReturnType<typeof setInterval>;
     public existingLocation: string;
-    public setIntervalHandle: number;
+    public setIntervalHandle: ReturnType<typeof setInterval>;
 
     constructor(queryParamKey: string) {
         this.queryParamKey = queryParamKey;
